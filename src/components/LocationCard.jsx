@@ -2,24 +2,25 @@ export const LocationCard = ({ location }) => {
 
   return (
     <>
-      <div className="d-flex">
-        <div className="card" style={{ width: "18rem", background: "" }}>
+      <div className="container mt-5">
+        <div className="card h-100" style={{ width: "18rem" }}>
           <img
-            src={`https://cdn.thesimpsonsapi.com/1280/location/${location.id}.webp`}
+            src={`https://cdn.thesimpsonsapi.com/500/location/${location.id}.webp`}
             className="card-img-top"
             alt={location.name}
           />
-          <div className="card-body">
-            <h5 className="card-title">Name: {location.name}</h5>
+          <div className="card-body align-content-around ">
+            <h5 className="card-title text-uppercase">{location.name}</h5>
             <p className="card-text">Town: {location.town}</p>
             <p className="card-text">Use: {location.use}</p>
-            <div className="d-flex justify-content-between m-2 ">
-              <button type="button" className="col-4 btn btn-warning mb-0">Details</button>
-              <button type="button" className="col-4 btn btn-warning mb-0" id="btn-heart"><i className="fa-solid fa-heart"></i></button>
-            </div>
+          </div>
+          <div className="d-flex justify-content-between mt-auto p-3 ">
+            <button type="button" className="col-4 btn " style={{ backgroundColor: "#ffbf00" }}>Details</button>
+            <button type="button" className="col-4 btn btn-warning" id="btn-heart"><i className="fa-solid fa-heart"></i></button>
           </div>
         </div>
       </div>
+
     </>
   );
 };

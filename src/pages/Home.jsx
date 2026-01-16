@@ -17,7 +17,7 @@ export const Home = () => {
 	return (
 		<>
 			<h1 className="text-center mt-5">Simpsons Characters</h1>
-			<div className="container bg-dark rounded-2 bg-opacity-25 p-5">
+			<div className="container bg-dark rounded-2 bg-opacity-25">
 				<div className="d-flex overflow-auto pb-2" style={{ gap: "3rem" }}>
 					{store.characters && store.characters.map((character) => {
 						return (
@@ -25,7 +25,7 @@ export const Home = () => {
 						)
 					})}
 				</div>
-				<div className="d-flex overflow-auto pb-2 mt-5" style={{ gap: "3rem" }}>
+				<div className="d-flex overflow-auto pb-2" style={{ gap: "3rem" }}>
 					{store.locations && store.locations.map((location) => {
 						return (
 							<LocationCard location={location} key={location.id} />
