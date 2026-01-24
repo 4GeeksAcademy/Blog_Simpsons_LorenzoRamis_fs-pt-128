@@ -8,6 +8,7 @@ export const LocationCard = ({ location }) => {
             src={`https://cdn.thesimpsonsapi.com/500/location/${location.id}.webp`}
             className="card-img-top"
             alt={location.name}
+            style={{height: "12rem", objectFit: "cover"}}
           />
           <div className="card-body align-content-around ">
             <h5 className="card-title text-uppercase">{location.name}</h5>

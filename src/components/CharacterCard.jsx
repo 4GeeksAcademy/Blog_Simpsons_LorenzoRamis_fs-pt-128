@@ -8,6 +8,7 @@ export const CharacterCard = ({ character }) => {
             src={`https://cdn.thesimpsonsapi.com/500/character/${character.id}.webp`}
             className="card-img-top"
             alt={character.name}
+            style={{height: "12rem", objectFit: "contain"}}
           />
           <div className="card-body">
             <h5 className="card-title text-uppercase">{character.name}</h5>
