@@ -1,6 +1,7 @@
 import { json } from "react-router-dom"
 
-export const getCharacter = async (dispatch) => {
+const BASE_URL = `https://thesimpsonsapi.com/api`
+export const getCharacters = async (dispatch) => {
     const response = await fetch (
         `https://thesimpsonsapi.com/api/characters`
     )
@@ -11,7 +12,7 @@ export const getCharacter = async (dispatch) => {
     dispatch ({type: "set_character", payload: data.results})
 }
 
-export const getLocation = async (dispatch) => {
+export const getLocations = async (dispatch) => {
     const response = await fetch (
         `https://thesimpsonsapi.com/api/locations`
     )
@@ -20,4 +21,22 @@ export const getLocation = async (dispatch) => {
     console.log(data);
     
     dispatch ({type: "set_location", payload: data.results})
+}
+
+export const getLocation = async (id) => {
+    const response = await fetch ( 
+        `${BASE_URL}/locations/${id}`
+    )
+
+    const data = await response.json()
+    return data
+}
+
+export const getCharacter = async (id) => {
+    const response = await fetch ( 
+        `${BASE_URL}/characters/${id}`
+    )
+
+    const data = await response.json()
+    return data
 }
