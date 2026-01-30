@@ -29,23 +29,42 @@ export default function storeReducer(store, action = {}) {
         locations: action.payload
       }
 
-    case 'add_fav':
+    case 'fav_char':
 
       const character = action.payload;
-      const exist = store.favorite.find(item => item.id === character.id);
+      const exist_char = store.favorite.find(item => item.id === character.id);
 
       if (!character || !character.id) {
         console.error("Intentaste añadir un favorito sin ID válido:", character);
         return store;
       }
 
-      if (exist) {
+      if (exist_char) {
         return store;
       }
 
       return {
         ...store,
         favorite: [...store.favorite, character]
+      };
+
+      case 'fav_loc':
+
+      const location = action.payload;
+      const exist_loc = store.favorite.find(item => item.id === location.id);
+
+      if (!location || !location.id) {
+        console.error("Intentaste añadir un favorito sin ID válido:", location);
+        return store;
+      }
+
+      if (exist_loc) {
+        return store;
+      }
+
+      return {
+        ...store,
+        favorite: [...store.favorite, location]
       };
 
       case 'delete_fav':

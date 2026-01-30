@@ -1,10 +1,15 @@
 import { Link } from "react-router-dom";
+import useGlobalReducer from "../hooks/useGlobalReducer"
 
 export const LocationCard = ({ location }) => {
 
+  const { store, dispatch } = useGlobalReducer()
+  const addFav = () => {
+    dispatch({ type: 'fav_loc', payload: location })
+  }
   return (
     <>
-      <div className="container mt-5">
+      <div className="container mt-3 p-0">
         <div className="card h-100" style={{ width: "18rem" }}>
           <img
             src={`https://cdn.thesimpsonsapi.com/500/location/${location.id}.webp`}
@@ -21,7 +26,7 @@ export const LocationCard = ({ location }) => {
             <Link className="" to={`/location/${location.id}`}>
               <button type="button" className="w-100 btn btn-warning " >Details</button>
             </Link>
-            <button type="button" className="col-4 btn btn-warning" id="btn-heart"><i className="fa-solid fa-heart"></i></button>
+            <button type="button" className="col-4 btn btn-warning" id="btn-heart" onClick={addFav}><i className="fa-solid fa-heart"></i></button>
           </div>
         </div>
       </div>

@@ -27,51 +27,56 @@ export const CharacterDetails = () => {
 
     // const randomPhrase = character.phrases.length > 0 ? character.phrases[Math.floor(Math.random() * character.phrases.length)] : "No hay frases disponibles";
 
-    const addFav = () => {
-        dispatch({ type: 'add_fav', payload: character })
+    const fav_char = () => {
+        dispatch({ type: 'fav_char', payload: character })
     }
 
     return (
         <>
             <div className="container mt-4">
-                <Link to="/">
-                    <button className="btn m-2"><i className="fa-solid fa-arrow-left"></i> Back</button>
-                </Link>
-                <div className="d-flex">
-                    <div className="card mb-3" style={{ width: "1080px" }}>
-                        <div className="row g-0">
-                            <div className="col-md-4">
-                                <img src={`https://cdn.thesimpsonsapi.com/1280/character/${character.id}.webp`} className="img-fluid rounded-start" alt="..." />
-                            </div>
-                            <div className="col-md-4">
-                                <div className="card-body">
-                                    <h4 className="card-title">{character.name}</h4>
-                                    <p className="card-text">Age: {character.age}</p>
-                                    <p className="card-text">Birthdate: {character.birthdate}</p>
-                                    <p className="card-text">Gender: {character.gender}</p>
-                                    <p className="card-text">Occupation: {character.occupation}</p>
-                                    <p className="card-text">Status: {character.status}</p>
-                                    <div className="mt-1">
-                                        <span className="card-text">Phrases:</span>
-                                        {character.phrases && character.phrases.length > 0 ? (
-                                            <ul className="list-group list-group-flush">
-                                                {character.phrases.slice(0,4).map((phrase, index) => (
-                                                    <li key={index} className="list-group-item bg-transparent border-0 ps-0">
-                                                        <span className="fst-italic text-secondary">"{phrase}"</span>
-                                                    </li>
-                                                ))}
-                                            </ul>
-                                        ) : (
-                                            <p className="text-muted small">Este personaje no tiene frases registradas.</p>
-                                        )}
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="container col-md-4 p-3 text-center">
-                                <button type="button" className="btn btn-warning w-50" onClick={addFav}><i className="fa-solid fa-heart"></i></button>
-                            </div>
-                        </div>
+                <div className="card mb-3">
+                    <div className="d-flex justify-content-between p-2">
+                        <Link className="" to={`/`}>
+                            <button type="button" className="w-100 btn btn-warning " ><i className="fa-solid fa-arrow-left"></i> Back</button>
+                        </Link>
+                        <button type="button" className="col-md-2 btn btn-warning" onClick={fav_char}><i className="fa-solid fa-heart"></i></button>
                     </div>
+                    <div className="d-flex justify-content-center align-middle">
+                        <img src={`https://cdn.thesimpsonsapi.com/1280/character/${character.id}.webp`} className="" style={{ width: "300px" }} alt="..." />
+                    </div>
+                    <h4 className="card-title text-center">{character.name}</h4>
+                    <table class="table text-center">
+                        <thead>
+                            <tr>
+                                <th scope="col-md-1">Age</th>
+                                <th scope="col-md-2">Birthdate</th>
+                                <th scope="col-md-2">Gender</th>
+                                <th scope="col-md-3">Phrases</th>
+                                <th scope="col-md-2">Occupation</th>
+                                <th scope="col-md-2">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>{character.age}</td>
+                                <td>{character.birthdate}</td>
+                                <td>{character.gender}</td>
+                                <td>{character.phrases && character.phrases.length > 0 ? (
+                                    <ul className="list-group list-group-flush">
+                                        {character.phrases.slice(0, 4).map((phrase, index) => (
+                                            <li key={index} className="list-group-item bg-transparent border-0 ps-0">
+                                                <span className="fst-italic text-secondary">"{phrase}"</span>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                ) : (
+                                    <p className="text-muted small">Este personaje no tiene frases registradas.</p>
+                                )}</td>
+                                <td>{character.occupation}</td>
+                                <td>{character.status}</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </>

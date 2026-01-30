@@ -10,12 +10,16 @@ export const LocationDetails = () => {
 
     const [location, setLocation] = useState()
 
-    const { store, dispach } = useGlobalReducer()
+    const { store, dispatch } = useGlobalReducer()
 
     const getLocationData = async () => {
         const locationData = await getLocation(id)
         setLocation(locationData)
     }
+
+    const addFav = () => {
+    dispatch({ type: 'fav_loc', payload: location })
+  }
 
     useEffect(() => {
         getLocationData()
@@ -28,10 +32,13 @@ export const LocationDetails = () => {
     return (
         <>
             <div className="container mt-4">
-                <Link to="/">
-                    <button className="btn m-2"><i class="fa-solid fa-arrow-left"></i> Back</button>
-                </Link>
                 <div className="card mb-3">
+                    <div className="d-flex justify-content-between p-2">
+                        <Link className="" to={`/`}>
+                            <button type="button" className="w-100 btn btn-warning " ><i className="fa-solid fa-arrow-left"></i> Back</button>
+                        </Link>
+                        <button type="button" className="col-md-2 btn btn-warning" onClick={addFav}><i className="fa-solid fa-heart"></i></button>
+                    </div>
                     <img src={`https://cdn.thesimpsonsapi.com/1280/location/${location.id}.webp`} className="card-img-top" alt="..." />
                     <div className="card-body">
                         <h5 className="card-title">{location.name}</h5>
